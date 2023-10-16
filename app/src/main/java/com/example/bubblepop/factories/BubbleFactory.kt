@@ -56,10 +56,6 @@ open class Bubble {
         // Additional move logic specific to SmallBubble
     }
 
-    open fun render(canvas: Canvas) {
-
-        // Additional render logic specific to SmallBubble
-    }
 
     // Additional properties and methods...
 }
