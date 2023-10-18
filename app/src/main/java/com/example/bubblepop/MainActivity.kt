@@ -4,9 +4,14 @@ import android.app.Activity
 import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
-import com.example.bubblepop.views.GameView
+
+import processing.android.PFragment
+
+
 
 class GameActivity : Activity() {
+    private lateinit var sketch: BubbleSketch
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -15,7 +20,10 @@ class GameActivity : Activity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
-        setContentView(GameView(this))
+
+        sketch = BubbleSketch()
+        val fragment = PFragment(sketch)
+        fragment.setView(sketch, this)
+        setContentView(sketch)
     }
 }
-

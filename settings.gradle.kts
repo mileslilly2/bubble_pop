@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "bubble pop"
 include(":app")
- 
+include(":ProcessingLib")

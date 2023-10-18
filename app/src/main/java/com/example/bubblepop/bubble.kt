@@ -1,56 +1,30 @@
 package com.example.bubblepop
 
+
 import processing.core.PApplet
 
-
-  
-    fun runSketch(args: Array<String>) {
-        PApplet.main("com.example.bubblepop.BubbleSketch")
-    }
-
-
-
-class  BubbleSketch : PApplet() {
-    lateinit var bubble: Bubble
-
-    override fun settings() {
-        size(800, 600)
-    }
-
-    override fun setup() {
-        background(255f)
-        bubble = Bubble(this, width / 2f, height / 2f, 50f)
-    }
-
-    override fun draw() {
-        background(255f)
-        bubble.move()
-        bubble.display()
-    }
-
-
-
-
-}
-
-class Bubble(private val pApplet: PApplet, var x: Float, var y: Float, var diameter: Float) {
-    var speedX = pApplet.random(-5f, 5f)
-    var speedY = pApplet.random(-5f, 5f)
+class Bubble(private val p: PApplet, private var x: Float, private var y: Float, private val r: Float) {
+    private val xSpeed = p.random(-2f, 2f)
+    private val ySpeed = p.random(-2f, 2f)
 
     fun move() {
-        x += speedX
-        y += speedY
+        x += xSpeed
+        y += ySpeed
 
-        // Bounce the bubble if it hits the edge of the screen
-        if (x < diameter / 2 || x > pApplet.width - diameter / 2) {
-            speedX *= -1
+        // Boundary check to ensure the bubble doesn't leave the screen
+        if (x > p.width - r || x < r) {
+            x *= -1
         }
-        if (y < diameter / 2 || y > pApplet.height - diameter / 2) {
-            speedY *= -1
+        if (y > p.height - r || y < r) {
+            y *= -1
         }
     }
 
     fun display() {
-        pApplet.ellipse(x, y, diameter, diameter)
+        p.stroke(0)
+        p.fill(127f)
+        p.ellipse(x, y, r * 2, r * 2)
     }
 }
+
+
