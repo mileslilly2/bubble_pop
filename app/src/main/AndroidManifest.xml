@@ -16,10 +16,10 @@
             android:name="com.example.bubblepop.GameActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.BubblePop">
+            android:theme="@style/FullScreenTheme">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -42,9 +42,6 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
         // Update game state (e.g., move objects, handle input, etc.)
     }
 
-    override fun draw(canvas: Canvas?) {
-        super.draw(canvas)
-        // Draw game objects (e.g., sprites, text, etc.) on the canvas
-    }
+
 }
 
