@@ -4,8 +4,8 @@ package com.example.bubblepop
 import processing.core.PApplet
 
 class Bubble(private val p: PApplet, private var x: Float, private var y: Float, private val r: Float) {
-    private val xSpeed = p.random(-2f, 2f)
-    private val ySpeed = p.random(-2f, 2f)
+    private var xSpeed = p.random(-2f, 2f)
+    private var ySpeed = p.random(-2f, 2f)
 
     fun move() {
         x += xSpeed
@@ -13,10 +13,12 @@ class Bubble(private val p: PApplet, private var x: Float, private var y: Float,
 
         // Boundary check to ensure the bubble doesn't leave the screen
         if (x > p.width - r || x < r) {
-            x *= -1
+            xSpeed *= -1
+            x = x.coerceIn(r, p.width - r)
         }
         if (y > p.height - r || y < r) {
-            y *= -1
+            ySpeed *= -1
+            y = y.coerceIn(r, p.height - r)
         }
     }
 
